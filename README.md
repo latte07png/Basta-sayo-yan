@@ -1,1 +1,0 @@
-# Basta-sayo-yan
