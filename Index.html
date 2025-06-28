@@ -1,6 +1,83 @@
-You're Irreplaceable body { margin: 0; padding: 0; height: 100vh; background: linear-gradient(135deg, #ffb6d9, #a3b6ff, #dca3ff); overflow: hidden; font-family: 'Segoe UI', sans-serif; } .frame { position: relative; width: 90%; max-width: 700px; margin: 50px auto; background-color: #ff4f91; padding: 30px; border-radius: 20px; box-shadow: 0 0 30px rgba(0,0,0,0.2); border: 4px dashed white; color: white; z-index: 2; } .frame p { line-height: 1.8; white-space: pre-wrap; font-size: 16px; } .heart { position: absolute; width: 20px; height: 20px; background-color: pink; transform: rotate(45deg); animation: fall 6s linear infinite; } .heart::before, .heart::after { content: ''; position: absolute; width: 20px; height: 20px; background-color: inherit; border-radius: 50%; } .heart::before { top: -10px; left: 0; } .heart::after { left: -10px; top: 0; } @keyframes fall { 0% { top: -10%; opacity: 1; } 100% { top: 110%; opacity: 0; } } 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday Hyeriii</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffc0cb, #add8e6, #dda0dd);
+      font-family: 'Courier New', Courier, monospace;
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
 
-I made this just for you. Thank you for existing and for being so lovable in your own little ways. I want to tell you how important you are para sakin. You're irreplaceable and no matter what happens, no one could ever make me feel the way you do. 
+    .card {
+      background: #fff0f5;
+      color: #8b004f;
+      border: 4px solid #ff69b4;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 700px;
+      margin: 0 auto;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff85c1;
+    }
+
+    .heart {
+      position: absolute;
+      top: -20px;
+      font-size: 24px;
+      animation: fall linear infinite;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    #letter {
+      display: none;
+      margin-top: 30px;
+      font-size: 17px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card">
+    <h2>ROROROROR</h2>
+    <p id="question">Do you know how much I love you?</p>
+    <button onclick="answer('yes')">Yes</button>
+    <button onclick="answer('no')">No</button>
+  </div>
+
+  <div id="letter" class="card">
+    <p>
+I made this just for you. Thank you for existing and for being so lovable in your own little ways.
+I want to tell you how important you are para sakin. You're irreplaceable and no matter what happens, no one could ever make me feel the way you do.
 
 Honestly, you ruin my peace sometimes. You pop into my thoughts out of nowhere and suddenly, the whole world feels too quiet or too loud. And the weird part is, I don't even mind. You ruin the parts of me I thought I had already figured out. You make me second guess if I was ever really okay before you came into my life. Because now, nothing feels enough if you’re not part of it.
 
@@ -19,4 +96,56 @@ You might not know how much space you take up in my life, but it's a lot. You’
 So no matter how messy or complicated things get, I want you to know this. You matter to me more than you think. You're not just someone I like having around. You're someone I don’t want to imagine life without.
 
 And that's the kind of ruin I’d gladly live with.
+    </p>
+  </div>
 
+  <script>
+    const questions = [
+      {
+        text: "Do you know how much I love you?",
+        responses: {
+          yes: "I'm happy you know",
+          no: "Please press okay so you'll know how much I love you "
+        }
+      },
+      {
+        text: "Do you love me?",
+        responses: {
+          yes: "UEHEOEUDHOODJDIW928272YWHSJSJ ",
+          no: "Ay ganon sige okay lang  d sya masakit "
+        }
+      }
+    ];
+
+    let currentQuestion = 0;
+
+    function answer(ans) {
+      alert(questions[currentQuestion].responses[ans]);
+
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        document.getElementById("question").textContent = questions[currentQuestion].text;
+      } else {
+        document.getElementById("card").style.display = "none";
+        document.getElementById("letter").style.display = "block";
+      }
+    }
+
+    function createHeart() {
+      const heartStyles = ["💜", "🩷", "💙"];
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = heartStyles[Math.floor(Math.random() * heartStyles.length)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 2 + Math.random() * 3 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
